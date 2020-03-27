@@ -1,13 +1,22 @@
 import { StyleSheet } from 'react-native';
 
-import { WHITE, SCORPION } from '@constants/colors';
+import { WHITE, SCORPION, BLACK } from '@constants/colors';
 
 export default StyleSheet.create({
   bookContainer: {
     backgroundColor: WHITE,
+    borderRadius: 5,
     flexDirection: 'row',
+    marginBottom: 10,
     paddingHorizontal: 35,
-    paddingVertical: 20
+    paddingVertical: 20,
+    shadowColor: BLACK,
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 1
   },
   bookCover: {
     height: 75,
