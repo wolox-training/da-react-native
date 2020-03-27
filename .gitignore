@@ -58,8 +58,5 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 
-# JSON DB
-book.JSON
-
-# Environment Variables
+# Env
 .env
