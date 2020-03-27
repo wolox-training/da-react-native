@@ -1,20 +1,25 @@
 import React from 'react';
+import { string, number } from 'prop-types';
 import { View, Text, Image } from 'react-native';
-
-import BookCover from '@assets/img_book1.png';
 
 import styles from './styles';
 
-function Book() {
+function Book({ title, author, cover }) {
   return (
     <View style={styles.bookContainer}>
-      <Image style={styles.bookCover} source={BookCover} />
+      <Image style={styles.bookCover} source={cover} />
       <View style={styles.bookInfo}>
-        <Text style={styles.bookTitle}>A little Bird Told Me</Text>
-        <Text style={styles.bookAuthor}>Timothy Cross</Text>
+        <Text style={styles.bookTitle}>{title}</Text>
+        <Text style={styles.bookAuthor}>{author}</Text>
       </View>
     </View>
   );
 }
+
+Book.propType = {
+  bookAuthor: string,
+  bookTitle: string,
+  cover: number
+};
 
 export default Book;
