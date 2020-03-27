@@ -1,15 +1,21 @@
 import React from 'react';
 
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import Book from '@components/Book';
-import cover from '@assets/img_book1.png';
+import { getBooksList } from '@services/BookService';
+import useRequest from '@hooks/useRequest';
+
+import styles from './styles';
 
 function Library() {
+  const [data] = useRequest(getBooksList);
   return (
-    <View>
-      <Book cover={cover} title="A little bird Told Me" author="Timothy Cross" />
-    </View>
+    <ScrollView style={styles.container}>
+      {data?.map(({ id, title, author, image_url: img }) => (
+        <Book key={id} cover={img} title={title} author={author} />
+      ))}
+    </ScrollView>
   );
 }
 

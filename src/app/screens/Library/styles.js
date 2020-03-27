@@ -1,7 +1,11 @@
 import { StyleSheet } from 'react-native';
 
+import { POLAR } from '@constants/colors';
+
 export default StyleSheet.create({
   container: {
-    flex: 1
+    backgroundColor: POLAR,
+    flex: 1,
+    padding: 50
   }
 });
