@@ -1,21 +1,18 @@
 import React from 'react';
 
-import { ScrollView } from 'react-native';
+import { FlatList } from 'react-native';
 
-import Book from '@components/Book';
 import { getBooksList } from '@services/BookService';
 import useRequest from '@hooks/useRequest';
+import { keyExtractor } from '@utils/renders';
 
 import styles from './styles';
+import { renderListItem } from './utils';
 
 function Library() {
   const [data] = useRequest(getBooksList);
   return (
-    <ScrollView style={styles.container}>
-      {data?.map(({ id, title, author, image_url: img }) => (
-        <Book key={id} cover={img} title={title} author={author} />
-      ))}
-    </ScrollView>
+    <FlatList style={styles.container} data={data} renderItem={renderListItem} keyExtractor={keyExtractor} />
   );
 }
 
