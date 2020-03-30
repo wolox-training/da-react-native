@@ -6,19 +6,18 @@ import useRequest from '@hooks/useRequest';
 import { serializeBook } from '@utils/serializers';
 import { getBook } from '@services/BookService';
 import { DEFAULT_BOOK } from '@constants/book';
-import defaultCover from '@assets/img_book1.png';
 
 import styles from './styles';
 
 function BookDetail({ route }) {
   const { id } = route.params;
   const [data] = useRequest(getBook, { id });
-  const { imgUrl, title, author, year, genre } = serializeBook(data?.[0] || DEFAULT_BOOK);
+  const { imageUrl, title, author, year, genre } = serializeBook(data?.[0]) || DEFAULT_BOOK;
   return (
     <View style={styles.bookDetail}>
       <View style={styles.bookContainer}>
         <View style={styles.bookInfoContainer}>
-          <Image style={styles.bookCover} source={imgUrl ? imgUrl : defaultCover} />
+          <Image style={styles.bookCover} source={{ uri: imageUrl || DEFAULT_BOOK.imageUrl }} />
           <View style={styles.bookInfo}>
             <Text style={styles.bookTitle} numberOfLines={1}>
               {title}

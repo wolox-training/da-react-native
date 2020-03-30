@@ -40,6 +40,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 35
   },
+  bookInfo: {
+    flex: 1,
+    flexDirection: 'column'
+  },
   bookCover: {
     height: 105,
     marginRight: 20,

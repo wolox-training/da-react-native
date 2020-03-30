@@ -20,7 +20,7 @@ export default StyleSheet.create({
     width: 50
   },
   bookInfo: {
-    flex: 3,
+    flex: 1,
     flexDirection: 'column'
   },
   bookTitle: {

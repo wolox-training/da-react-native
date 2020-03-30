@@ -1,7 +1,5 @@
-import defaultCover from '@assets/img_book1.png';
-
 export const DEFAULT_BOOK = {
-  imageUrl: defaultCover,
+  imageUrl: 'http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg',
   title: 'Ring of Bright Water',
   author: 'Emme Thief',
   year: '1968'
