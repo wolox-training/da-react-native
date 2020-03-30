@@ -1,15 +1,18 @@
 import React from 'react';
 
-import { View } from 'react-native';
+import { FlatList } from 'react-native';
 
-import Book from '@components/Book';
-import cover from '@assets/img_book1.png';
+import { getBooksList } from '@services/BookService';
+import useRequest from '@hooks/useRequest';
+import { keyExtractor } from '@utils/renders';
+
+import styles from './styles';
+import { renderListItem } from './utils';
 
 function Library() {
+  const [data] = useRequest(getBooksList);
   return (
-    <View>
-      <Book cover={cover} title="A little bird Told Me" author="Timothy Cross" />
-    </View>
+    <FlatList style={styles.container} data={data} renderItem={renderListItem} keyExtractor={keyExtractor} />
   );
 }
 
