@@ -38,7 +38,7 @@ function BookDetail({ route }) {
             end={{ x: 1, y: 0 }}
             colors={[CERULEAN, JAVA, SCOOTER]}
             style={styles.buttonReturn}>
-            <Text style={styles.buttonReturnTitle}>Return a book</Text>
+            <Text style={styles.buttonReturnTitle}>Rent</Text>
           </LinearGradient>
         </TouchableHighlight>
       </View>
