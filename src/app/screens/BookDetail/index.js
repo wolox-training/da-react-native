@@ -1,11 +1,13 @@
 import React from 'react';
 import { shape, number } from 'prop-types';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import useRequest from '@hooks/useRequest';
 import { serializeBook } from '@utils/serializers';
 import { getBook } from '@services/BookService';
 import { DEFAULT_BOOK } from '@constants/book';
+import { CERULEAN, JAVA, SCOOTER } from '@constants/colors';
 
 import styles from './styles';
 
@@ -30,8 +32,14 @@ function BookDetail({ route }) {
         <TouchableHighlight style={styles.buttonComments}>
           <Text style={styles.buttonCommentsTitle}>Add a comment</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.buttonReturn}>
-          <Text style={styles.buttonReturnTitle}>Return a book</Text>
+        <TouchableHighlight>
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={[CERULEAN, JAVA, SCOOTER]}
+            style={styles.buttonReturn}>
+            <Text style={styles.buttonReturnTitle}>Return a book</Text>
+          </LinearGradient>
         </TouchableHighlight>
       </View>
     </View>

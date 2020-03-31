@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { WHITE, POLAR, GRAY, CERULEAN, TUNDORA } from '@constants/colors';
+import { WHITE, POLAR, GRAY, CERULEAN, TUNDORA, TRANSPARENT } from '@constants/colors';
 import { BOX_SHADOW } from '@styles/shadows';
 
 const COMMON_STYLES = {
@@ -61,7 +61,8 @@ export const styles = StyleSheet.create({
   },
   buttonReturn: {
     ...COMMON_STYLES.button,
-    backgroundColor: CERULEAN
+    backgroundColor: CERULEAN,
+    borderColor: TRANSPARENT
   },
   buttonComments: {
     ...COMMON_STYLES.button,
