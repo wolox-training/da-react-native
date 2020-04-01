@@ -6,6 +6,7 @@ export default StyleSheet.create({
   bookList: {
     backgroundColor: POLAR,
     flex: 1,
-    paddingHorizontal: 40
+    paddingHorizontal: 40,
+    paddingTop: 10
   }
 });
