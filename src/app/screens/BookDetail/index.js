@@ -17,8 +17,9 @@ function BookDetail({ route }) {
   const [data] = useRequest(getBook, { id });
   const { imageUrl, title, author, year, genre } = serializeBook(data?.[0]) || DEFAULT_BOOK;
   const headerHeight = useHeaderHeight();
+  const padding = styles.bookDetail.paddingTop;
   return (
-    <View style={{ ...styles.bookDetail, headerHeight }}>
+    <View style={{ ...styles.bookDetail, paddingTop: headerHeight + padding }}>
       <View style={styles.bookContainer}>
         <View style={styles.bookInfoContainer}>
           <Image style={styles.bookCover} source={{ uri: imageUrl || DEFAULT_BOOK.imageUrl }} />

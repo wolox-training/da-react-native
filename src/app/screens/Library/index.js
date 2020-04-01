@@ -14,13 +14,14 @@ function Library() {
   const [data] = useRequest(getBooksList);
   const books = serializeBooks(data);
   const headerHeight = useHeaderHeight();
+  const padding = styles.bookList.paddingTop;
   return (
     <FlatList
       style={styles.bookList}
       data={books}
       renderItem={renderListItem}
       keyExtractor={keyExtractor}
-      contentContainerStyle={{ paddingTop: headerHeight }}
+      contentContainerStyle={{ paddingTop: headerHeight + padding }}
     />
   );
 }
