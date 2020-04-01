@@ -1,6 +1,7 @@
 import React from 'react';
 import { shape, number } from 'prop-types';
 import LinearGradient from 'react-native-linear-gradient';
+import { useHeaderHeight } from '@react-navigation/stack';
 
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import useRequest from '@hooks/useRequest';
@@ -15,8 +16,9 @@ function BookDetail({ route }) {
   const { id } = route.params;
   const [data] = useRequest(getBook, { id });
   const { imageUrl, title, author, year, genre } = serializeBook(data?.[0]) || DEFAULT_BOOK;
+  const headerHeight = useHeaderHeight();
   return (
-    <View style={styles.bookDetail}>
+    <View style={{ ...styles.bookDetail, headerHeight }}>
       <View style={styles.bookContainer}>
         <View style={styles.bookInfoContainer}>
           <Image style={styles.bookCover} source={{ uri: imageUrl || DEFAULT_BOOK.imageUrl }} />

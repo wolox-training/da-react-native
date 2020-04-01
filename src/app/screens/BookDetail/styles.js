@@ -26,7 +26,8 @@ export const styles = StyleSheet.create({
     backgroundColor: POLAR,
     flex: 1,
     flexDirection: 'column',
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    paddingTop: 114
   },
   bookContainer: {
     ...BOX_SHADOW.type1,
