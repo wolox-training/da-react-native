@@ -8,12 +8,14 @@ module.exports = {
         alias: {
           '@constants': './src/constants',
           '@assets': './src/assets',
+          '@screens': './src/app/screens',
           '@components': './src/app/components',
           '@hooks': './src/hooks',
           '@services': './src/services',
           '@config': './src/config',
           '@utils': './src/utils',
-          '@styles': './src/styles'
+          '@styles': './src/styles',
+          '@context': './src/context'
         }
       }
     ]
