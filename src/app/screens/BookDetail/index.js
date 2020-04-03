@@ -4,21 +4,24 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useHeaderHeight } from '@react-navigation/stack';
 
 import { View, Text, TouchableHighlight, Image } from 'react-native';
-import useRequest from '@hooks/useRequest';
+import { useRequest } from '@hooks';
 import { serializeBook } from '@utils/serializers';
 import { getBook } from '@services/BookService';
 import { DEFAULT_BOOK } from '@constants/book';
-import { CERULEAN, JAVA, SCOOTER } from '@constants/colors';
+import { CERULEAN, JAVA, SCOOTER, POLAR } from '@constants/colors';
+import Loader from '@components/Loader';
 
 import styles from './styles';
 
 function BookDetail({ route }) {
   const { id } = route.params;
-  const [data] = useRequest(getBook, { id });
+  const { data, loading } = useRequest(getBook, { id });
   const { imageUrl, title, author, year, genre } = serializeBook(data?.[0]) || DEFAULT_BOOK;
   const headerHeight = useHeaderHeight();
   const padding = styles.bookDetail.paddingTop;
-  return (
+  return loading ? (
+    <Loader bgColor={POLAR} />
+  ) : (
     <View style={{ ...styles.bookDetail, paddingTop: headerHeight + padding }}>
       <View style={styles.bookContainer}>
         <View style={styles.bookInfoContainer}>

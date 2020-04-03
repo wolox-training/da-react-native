@@ -1,27 +1,31 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { useHeaderHeight } from '@react-navigation/stack';
+import Loader from '@components/Loader';
 
 import { getBooksList } from '@services/BookService';
-import useRequest from '@hooks/useRequest';
+import { useRequest } from '@hooks';
 import { keyExtractor } from '@utils/renders';
 import { serializeBooks } from '@utils/serializers';
+import { POLAR } from '@constants/colors';
 
 import styles from './styles';
 import { renderListItem } from './utils';
 
 function Library() {
-  const [data] = useRequest(getBooksList);
+  const { data, loading } = useRequest(getBooksList);
   const books = serializeBooks(data);
   const headerHeight = useHeaderHeight();
   const padding = styles.bookList.paddingTop;
-  return (
+  return loading ? (
+    <Loader bgColor={POLAR} />
+  ) : (
     <FlatList
       style={styles.bookList}
       data={books}
       renderItem={renderListItem}
       keyExtractor={keyExtractor}
-      contentContainerStyle={{ paddingTop: headerHeight + padding }}
+      contentContainerStyle={{ ...styles.bookListContainer, paddingTop: headerHeight + padding }}
     />
   );
 }
