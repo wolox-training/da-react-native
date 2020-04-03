@@ -1,7 +1,7 @@
-import api from '@config/api';
+import { hostedApi } from '@config/api';
 import AsyncStorage from '@react-native-community/async-storage';
 
-export const authUser = user => api.get('/users', user);
+export const authUser = user => hostedApi.post('/auth/sign_in', user);
 
 export const getUser = () => AsyncStorage.getItem('userToken');
 
