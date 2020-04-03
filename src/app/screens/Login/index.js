@@ -4,9 +4,10 @@ import { TextInput, ImageBackground, Image, Text, TouchableOpacity } from 'react
 import { useGlobalValue } from '@context';
 import { actionsCreator } from '@context/user/actions';
 import { useLazyRequest } from '@hooks';
-import { authUser, setUser } from '@services/UserService';
+import { authUser, setUserToken } from '@services/UserService';
 import LoginBg from '@assets/bc_inicio.png';
 import LoginLogo from '@assets/Group.png';
+import { hostedApi } from '@config/api';
 
 import styles from './styles';
 import { DEFAULT_ERROR_MSG } from './constants';
@@ -15,15 +16,16 @@ function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const [auth, { data, error: requestError }] = useLazyRequest(authUser);
-  const userToken = data?.[0]?.token;
+  const [auth, { data: response, error: requestError }] = useLazyRequest(authUser);
   const [, dispatch] = useGlobalValue();
 
   useEffect(() => {
-    if (userToken) {
+    if (response) {
       (async () => {
         try {
-          await setUser(userToken);
+          const { 'access-token': userToken, Uid, Client } = response?.headers;
+          await setUserToken(userToken);
+          hostedApi.setHeaders({ 'Access-Token': userToken, Uid, Client });
           dispatch(actionsCreator.logIn(userToken));
         } catch {
           setError(DEFAULT_ERROR_MSG);
@@ -32,7 +34,7 @@ function Login() {
     } else if (requestError) {
       setError(DEFAULT_ERROR_MSG);
     }
-  }, [userToken, requestError, dispatch]);
+  }, [response, requestError, dispatch]);
 
   const handleEmail = value => setEmail(value);
   const handlePassword = value => setPassword(value);

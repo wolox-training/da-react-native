@@ -11,10 +11,7 @@ function useRequest(query, params) {
         setLoading(true);
         try {
           const response = await query(params);
-          if (response.ok) {
-            setData(response.data);
-            setLoading(false);
-          } else if (response) {
+          if (response && (response.ok || response.ok === undefined)) {
             setData(response);
             setLoading(false);
           } else {

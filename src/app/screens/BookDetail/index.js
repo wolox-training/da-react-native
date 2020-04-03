@@ -15,8 +15,8 @@ import styles from './styles';
 
 function BookDetail({ route }) {
   const { id } = route.params;
-  const { data, loading } = useRequest(getBook, { id });
-  const { imageUrl, title, author, year, genre } = serializeBook(data?.[0]) || DEFAULT_BOOK;
+  const { data: response, loading } = useRequest(getBook, { id });
+  const { imageUrl, title, author, year, genre } = serializeBook(response?.data?.[0]) || DEFAULT_BOOK;
   const headerHeight = useHeaderHeight();
   const padding = styles.bookDetail.paddingTop;
   return loading ? (

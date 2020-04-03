@@ -9,12 +9,9 @@ function useLazyRequest(query) {
     try {
       setLoading(true);
       const response = await query(values);
-      if (response.ok) {
+      if (response && (response.ok || response.ok === undefined)) {
         setLoading(false);
         setData(response);
-      } else if (response) {
-        setData(response);
-        setLoading(false);
       } else {
         throw Error();
       }

@@ -13,8 +13,8 @@ import styles from './styles';
 import { renderListItem } from './utils';
 
 function Library() {
-  const { data, loading } = useRequest(getBooksList);
-  const books = serializeBooks(data);
+  const { data: response, loading } = useRequest(getBooksList);
+  const books = serializeBooks(response?.data);
   const headerHeight = useHeaderHeight();
   const padding = styles.bookList.paddingTop;
   return loading ? (
