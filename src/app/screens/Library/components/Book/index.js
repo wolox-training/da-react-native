@@ -12,6 +12,7 @@ import styles from './styles';
 function Book({ id, title, author, imageUrl }) {
   const navigation = useNavigation();
   const handleClick = () => navigation.navigate(Routes.BOOK_DETAIL.NAME, { id });
+
   return (
     <TouchableOpacity style={styles.bookContainer} onPress={handleClick}>
       <Image style={styles.bookCover} source={{ uri: imageUrl || DEFAULT_BOOK.imageUrl }} />

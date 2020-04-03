@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { TextInput, ImageBackground, Image, Text, TouchableOpacity } from 'react-native';
+import {
+  TextInput,
+  ImageBackground,
+  Image,
+  Text,
+  TouchableWithoutFeedback,
+  ActivityIndicator,
+  View
+} from 'react-native';
 
 import { useGlobalValue } from '@context';
 import { actionsCreator } from '@context/user/actions';
@@ -8,6 +16,7 @@ import { authUser, setUserToken } from '@services/UserService';
 import LoginBg from '@assets/bc_inicio.png';
 import LoginLogo from '@assets/Group.png';
 import { hostedApi } from '@config/api';
+import { WHITE } from '@constants/colors';
 
 import styles from './styles';
 import { DEFAULT_ERROR_MSG } from './constants';
@@ -16,7 +25,7 @@ function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const [auth, { data: response, error: requestError }] = useLazyRequest(authUser);
+  const [auth, { data: response, error: requestError, loading }] = useLazyRequest(authUser);
   const [, dispatch] = useGlobalValue();
 
   useEffect(() => {
@@ -46,9 +55,15 @@ function Login() {
       <Image style={styles.loginLogo} source={LoginLogo} />
       <TextInput style={styles.loginInput} onChangeText={handleEmail} placeholder="Email" />
       <TextInput style={styles.loginInput} onChangeText={handlePassword} placeholder="Password" />
-      <TouchableOpacity onPress={handleSubmit} style={styles.loginSubmit}>
-        <Text style={styles.loginSubmitText}>Log In</Text>
-      </TouchableOpacity>
+      <TouchableWithoutFeedback disabled={loading} onPress={handleSubmit}>
+        <View style={styles.loginSubmit}>
+          {loading ? (
+            <ActivityIndicator size="small" color={WHITE} />
+          ) : (
+            <Text style={styles.loginSubmitText}>Log In</Text>
+          )}
+        </View>
+      </TouchableWithoutFeedback>
       <Text style={styles.loginError}>{error}</Text>
       <Text style={styles.loginFooter}>Designed, developed and used by woloxers</Text>
     </ImageBackground>
