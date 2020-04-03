@@ -23,10 +23,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     position: 'relative'
   },
-  headerBackBtn: {
-    height: 25,
-    width: 25
-  },
   headerTitle: {
     ...OS_STYLES[Platform.OS],
     color: WHITE,
