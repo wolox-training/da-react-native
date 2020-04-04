@@ -12,10 +12,10 @@ import {
 import { useGlobalValue } from '@context';
 import { actionsCreator } from '@context/user/actions';
 import { useLazyRequest } from '@hooks';
-import { authUser, setUserToken } from '@services/UserService';
+import { authUser, setAuthHeaders } from '@services/UserService';
 import LoginBg from '@assets/bc_inicio.png';
 import LoginLogo from '@assets/Group.png';
-import { hostedApi } from '@config/api';
+import api from '@config/api';
 import { WHITE } from '@constants/colors';
 
 import styles from './styles';
@@ -32,11 +32,12 @@ function Login() {
     if (response) {
       (async () => {
         try {
-          const { 'access-token': userToken, Uid, Client } = response?.headers;
-          await setUserToken(userToken);
-          hostedApi.setHeaders({ 'Access-Token': userToken, Uid, Client });
+          const { 'access-token': userToken, uid, client } = response?.headers;
+          const headers = { 'access-token': userToken, uid, client };
+          await setAuthHeaders(headers);
+          api.setHeaders(headers);
           dispatch(actionsCreator.logIn(userToken));
-        } catch {
+        } catch (e) {
           setError(DEFAULT_ERROR_MSG);
         }
       })();
