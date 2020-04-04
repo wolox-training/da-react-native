@@ -1,14 +1,8 @@
 import Header from '@components/Header';
-import { Platform } from 'react-native';
-
-export const HEADER_MODE = {
-  ios: 'float',
-  android: 'screen'
-};
 
 export const APP_OPTIONS = {
   header: Header,
-  headerMode: HEADER_MODE[Platform.OS],
+  headerMode: 'float',
   headerTransparent: true,
   headerStyle: { height: 114 }
 };
