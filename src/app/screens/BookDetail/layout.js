@@ -10,14 +10,14 @@ import { DEFAULT_BOOK } from '@constants/book';
 
 import styles from './styles';
 
-function BookDetail({ title, author, year, genre, imageUrl }) {
+function BookDetail({ title, author, year, genre, image: { url } }) {
   const headerHeight = useHeaderHeight();
   const padding = styles.bookDetail.paddingTop;
   return (
     <View style={{ ...styles.bookDetail, paddingTop: headerHeight + padding }}>
       <View style={styles.bookContainer}>
         <View style={styles.bookInfoContainer}>
-          <Image style={styles.bookCover} source={{ uri: imageUrl || DEFAULT_BOOK.imageUrl }} />
+          <Image style={styles.bookCover} source={{ uri: url || DEFAULT_BOOK.imageUrl }} />
           <View style={styles.bookInfo}>
             <Text style={styles.bookTitle} numberOfLines={1}>
               {title}

@@ -11,17 +11,9 @@ import BookDetail from './layout';
 function BookDetailContainer({ route }) {
   const { id } = route.params;
   const { data: response, loading } = useRequest(getBook, { id });
-  const { imageUrl, title, author, year, genre } = serializeBook(response?.data?.[0]) || DEFAULT_BOOK;
-
+  const { image, title, author, year, genre } = serializeBook(response?.data) || DEFAULT_BOOK;
   return (
-    <BookDetail
-      imageUrl={imageUrl}
-      title={title}
-      author={author}
-      year={year}
-      genre={genre}
-      isLoading={loading}
-    />
+    <BookDetail image={image} title={title} author={author} year={year} genre={genre} isLoading={loading} />
   );
 }
 
