@@ -194,7 +194,6 @@
 				396855A9D29BF3E785961586 /* Pods-RNTests.debug.xcconfig */,
 				7C5955244CC4ECFEE626D0C3 /* Pods-RNTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +307,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
