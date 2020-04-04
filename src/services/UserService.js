@@ -1,8 +1,9 @@
-import { hostedApi } from '@config/api';
-import AsyncStorage from '@react-native-community/async-storage';
+import api from '@config/api';
 
-export const authUser = user => hostedApi.post('/auth/sign_in', user);
+import { setStorageItem, getStorageItem } from '@utils/storage';
 
-export const getUserToken = () => AsyncStorage.getItem('userToken');
+export const authUser = user => api.post('/auth/sign_in', user);
 
-export const setUserToken = data => AsyncStorage.setItem('userToken', data);
+export const getAuthHeaders = () => getStorageItem('authHeaders');
+
+export const setAuthHeaders = data => data && setStorageItem('authHeaders', data);

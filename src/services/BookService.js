@@ -1,5 +1,5 @@
-import { localApi } from '@config/api';
+import api from '@config/api';
 
-export const getBooksList = () => localApi.get('/books');
+export const getBooksList = () => api.get('/books');
 
-export const getBook = id => localApi.get('/books', id);
+export const getBook = ({ id }) => api.get(`/books/${id}`);
