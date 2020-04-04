@@ -55,7 +55,12 @@ function Login() {
     <ImageBackground style={styles.loginBg} source={LoginBg}>
       <Image style={styles.loginLogo} source={LoginLogo} />
       <TextInput style={styles.loginInput} onChangeText={handleEmail} placeholder="Email" />
-      <TextInput style={styles.loginInput} onChangeText={handlePassword} placeholder="Password" />
+      <TextInput
+        style={styles.loginInput}
+        onChangeText={handlePassword}
+        secureTextEntry={true}
+        placeholder="Password"
+      />
       <TouchableWithoutFeedback disabled={loading} onPress={handleSubmit}>
         <View style={styles.loginSubmit}>
           {loading ? (
