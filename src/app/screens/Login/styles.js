@@ -2,6 +2,15 @@ import { StyleSheet } from 'react-native';
 
 import { WHITE, RED } from '@constants/colors';
 
+const COMMON_STYLES = {
+  button: {
+    borderRadius: 5,
+    height: 45,
+    marginBottom: 15,
+    width: 250
+  }
+};
+
 export const styles = StyleSheet.create({
   loginBg: {
     alignItems: 'center',
@@ -16,23 +25,17 @@ export const styles = StyleSheet.create({
     width: 160
   },
   loginInput: {
+    ...COMMON_STYLES.button,
     backgroundColor: WHITE,
-    borderRadius: 5,
-    height: 45,
-    marginBottom: 15,
-    padding: 10,
-    width: 250
+    padding: 10
   },
   loginSubmit: {
+    ...COMMON_STYLES.button,
     alignItems: 'center',
     borderColor: WHITE,
-    borderRadius: 5,
     borderStyle: 'solid',
     borderWidth: 1,
-    justifyContent: 'center',
-    marginBottom: 15,
-    height: 45,
-    width: 250
+    justifyContent: 'center'
   },
   loginSubmitText: {
     color: WHITE,
