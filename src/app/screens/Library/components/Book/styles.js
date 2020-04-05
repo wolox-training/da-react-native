@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { SCORPION, WHITE } from '@constants/colors';
+import { SCORPION, WHITE, GRAY } from '@constants/colors';
 
 import { BOX_SHADOW } from '@styles/shadows';
 
@@ -15,6 +15,7 @@ export default StyleSheet.create({
     paddingVertical: 20
   },
   bookCover: {
+    backgroundColor: GRAY,
     height: 75,
     marginRight: 20,
     width: 50
