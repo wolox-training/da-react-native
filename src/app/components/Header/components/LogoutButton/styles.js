@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
 
+import { BUTTON_SIZE } from '@styles/buttons';
+
 const styles = StyleSheet.create({
   logoutBtn: {
-    height: 30,
-    marginRight: 8,
-    width: 30
+    ...BUTTON_SIZE.type1,
+    marginRight: 8
   }
 });
 
