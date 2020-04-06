@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react';
 
 function useRequest(query, params) {
-  const [loading, setLoading] = useState(true);
+  const [reqParams] = useState(params);
+  const [loading, setLoading] = useState();
   const [data, setData] = useState();
   const [error, setError] = useState();
 
   useEffect(() => {
     (async () => {
-      if (!data) {
-        try {
-          const response = await query(params);
-          if (response.ok) {
-            setData(response.data);
-            setLoading(false);
-          } else {
-            throw Error("We couldn't get your books, try later");
-          }
-        } catch (e) {
-          setError(e);
+      setLoading(true);
+      try {
+        const response = await query(reqParams);
+        if (response?.ok) {
+          setData(response);
           setLoading(false);
+        } else {
+          throw Error();
         }
+      } catch {
+        setError(true);
+        setLoading(false);
       }
     })();
-  }, [query, params, data]);
+  }, [query, reqParams]);
 
-  return [data, loading, error];
+  return { data, loading, error };
 }
 
 export default useRequest;

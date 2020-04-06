@@ -9,12 +9,13 @@ import { DEFAULT_BOOK } from '@constants/book';
 
 import styles from './styles';
 
-function Book({ id, title, author, imageUrl }) {
+function Book({ id, title, author, image: { url } }) {
   const navigation = useNavigation();
   const handleClick = () => navigation.navigate(Routes.BOOK_DETAIL.NAME, { id });
+
   return (
     <TouchableOpacity style={styles.bookContainer} onPress={handleClick}>
-      <Image style={styles.bookCover} source={{ uri: imageUrl || DEFAULT_BOOK.imageUrl }} />
+      <Image style={styles.bookCover} source={{ uri: url || DEFAULT_BOOK.imageUrl }} />
       <View style={styles.bookInfo}>
         <Text style={styles.bookTitle} numberOfLines={1}>
           {title}
@@ -29,7 +30,7 @@ Book.propTypes = {
   id: number,
   title: string,
   author: string,
-  imageUrl: string
+  url: string
 };
 
 export default Book;

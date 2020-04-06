@@ -1,29 +1,15 @@
 import React from 'react';
-import { FlatList } from 'react-native';
-import { useHeaderHeight } from '@react-navigation/stack';
 
 import { getBooksList } from '@services/BookService';
-import useRequest from '@hooks/useRequest';
-import { keyExtractor } from '@utils/renders';
+import { useRequest } from '@hooks';
 import { serializeBooks } from '@utils/serializers';
 
-import styles from './styles';
-import { renderListItem } from './utils';
+import Library from './layout';
 
-function Library() {
-  const [data] = useRequest(getBooksList);
-  const books = serializeBooks(data);
-  const headerHeight = useHeaderHeight();
-  const padding = styles.bookList.paddingTop;
-  return (
-    <FlatList
-      style={styles.bookList}
-      data={books}
-      renderItem={renderListItem}
-      keyExtractor={keyExtractor}
-      contentContainerStyle={{ paddingTop: headerHeight + padding }}
-    />
-  );
+function LibraryContainer() {
+  const { data: response, loading } = useRequest(getBooksList);
+  const books = serializeBooks(response?.data) || [];
+  return <Library isLoading={loading} books={books} />;
 }
 
-export default Library;
+export default LibraryContainer;

@@ -8,5 +8,8 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 40,
     paddingTop: 10
+  },
+  bookListContainer: {
+    paddingBottom: 20
   }
 });

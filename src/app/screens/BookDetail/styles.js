@@ -46,6 +46,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   bookCover: {
+    backgroundColor: GRAY,
     height: 105,
     marginRight: 20,
     width: 70

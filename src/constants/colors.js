@@ -8,3 +8,5 @@ export const TUNDORA = '#4A4A4A';
 export const JAVA = '#16B3D9';
 export const SCOOTER = '#32C4C6';
 export const TRANSPARENT = 'transparent';
+export const RED = '#FF0000';
+export const BLUE = '#0000FF';
