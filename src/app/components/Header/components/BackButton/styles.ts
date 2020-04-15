@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
 
+import { BUTTON_SIZE } from '@styles/buttons';
+
 const styles = StyleSheet.create({
   headerBackBtn: {
-    height: 25,
-    width: 25
+    ...BUTTON_SIZE.type2
   }
 });
 
