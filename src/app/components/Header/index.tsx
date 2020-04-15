@@ -17,11 +17,10 @@ interface Props {
 
 interface CustomProps {
   backButton?: number;
-  hasBackBtn?: boolean;
   hasLogoutBtn?: boolean;
 }
 
-const withCustomHeader = ({ backButton, hasBackBtn, hasLogoutBtn }: CustomProps) =>
+const withCustomHeader = ({ backButton, hasLogoutBtn = false }: CustomProps) =>
   function PropsProxy({ scene, navigation }: Props) {
     const {
       options: { title, headerStyle }
@@ -31,10 +30,11 @@ const withCustomHeader = ({ backButton, hasBackBtn, hasLogoutBtn }: CustomProps)
     return (
       <ImageBackground style={{ ...styles.headerBg, height }} source={navBg}>
         <View style={styles.headerButton}>
-          {hasBackBtn && !hasLogoutBtn && (
+          {hasLogoutBtn ? (
+            <LogoutButton />
+          ) : (
             <BackButton backButton={backButton || defaultBackBtn} onPress={navigation.goBack} />
           )}
-          {hasLogoutBtn && !hasBackBtn && <LogoutButton />}
         </View>
         <Text style={styles.headerTitle}>{title}</Text>
       </ImageBackground>

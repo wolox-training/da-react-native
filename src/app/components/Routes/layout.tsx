@@ -32,7 +32,7 @@ function AppRoutes({ token }: Props) {
               component={BookDetail}
               options={{
                 title: Routes.BOOK_DETAIL.TITLE,
-                header: withCustomHeader({ hasBackBtn: true })
+                header: withCustomHeader({})
               }}
             />
           </>

@@ -1,7 +1,7 @@
 import withCustomHeader from '@components/Header';
 
 export const APP_OPTIONS = {
-  header: withCustomHeader({ hasLogoutBtn: true }),
+  header: withCustomHeader({}),
   headerMode: 'float',
   headerTransparent: true,
   headerStyle: { height: 114 }
