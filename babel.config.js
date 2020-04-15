@@ -15,7 +15,8 @@ module.exports = {
           '@config': './src/config',
           '@utils': './src/utils',
           '@styles': './src/styles',
-          '@context': './src/context'
+          '@context': './src/context',
+          '@interfaces': './src/interfaces'
         }
       }
     ]

@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, { useReducer } from 'react';
 import Routes from '@components/Routes';
 
-import { GlobalContext, globalState, globalReducer } from '@context';
+import { GlobalContext, globalState, globalReducer } from '@context/index';
 
 function App() {
   return (
