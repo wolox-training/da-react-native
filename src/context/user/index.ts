@@ -13,7 +13,8 @@ export const userReducer = (state: UserState, action: UserAction): UserState => 
       };
     case ActionTypes.LOG_OUT:
       return {
-        ...state
+        ...state,
+        token: null
       };
     default:
       return state;

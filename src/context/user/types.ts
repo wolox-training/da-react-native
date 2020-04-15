@@ -4,8 +4,8 @@ export enum ActionTypes {
 }
 
 export interface ActionsCreator {
-  logIn: (token: string) => UserAction;
-  logOut: () => UserAction;
+  logIn(token: string): UserAction;
+  logOut(): UserAction;
 }
 
 export interface UserState {

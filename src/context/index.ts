@@ -1,20 +1,20 @@
-import { useContext, createContext } from 'react';
+import React, { useContext, createContext } from 'react';
 
 import { userReducer, userState } from './user';
-import { UserState, UserAction } from './user/types';
+import { UserAction } from './user/types';
 
-interface GlobalState {
-  userState: UserState;
-}
-
-export const globalState: GlobalState = {
+export const globalState = {
   userState
 };
 
-export const globalReducer = (state: GlobalState, action: unknown) => ({
+const dispatch: React.Dispatch<any> = () => ({});
+
+export const globalReducer = (state: typeof globalState, action: unknown) => ({
   userState: userReducer(state.userState, action as UserAction)
 });
 
-export const GlobalContext = createContext(globalState);
+const defaultValue = [globalState, dispatch] as const;
+
+export const GlobalContext = createContext(defaultValue);
 
 export const useGlobalValue = () => useContext(GlobalContext);
