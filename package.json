@@ -6,8 +6,10 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "lint": "eslint .",
     "test": "jest",
-    "lint": "eslint ."
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.9.0",
@@ -16,11 +18,16 @@
     "@react-navigation/stack": "^5.2.8",
     "apisauce": "^1.1.1",
     "cerealizr": "^1.0.1-alpha",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "react": "16.9.0",
+    "react-dom": "^16.13.1",
     "react-native": "0.61.5",
     "react-native-config": "^1.0.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-mock-render": "^0.1.9",
     "react-native-reanimated": "^1.7.1",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.4.0"
@@ -35,21 +42,33 @@
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^24.9.0",
     "babel-plugin-module-resolver": "^4.0.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-config-wolox-react-native": "^1.0.1",
     "eslint-import-resolver-babel-module": "^5.1.2",
     "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-prettier": "^3.1.2",
     "install": "^0.13.0",
     "jest": "^24.9.0",
+    "jsdom": "16.2.2",
+    "jsdom-global": "3.0.2",
     "metro-react-native-babel-preset": "^0.56.0",
     "npm": "^6.14.2",
     "prettier": "^1.19.1",
     "react-test-renderer": "16.9.0",
+    "redux-mock-store": "^1.5.4",
     "typescript": "^3.8.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/__tests__/setup/"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/@react-native-community/async-storage/(?!(lib))"
+    ]
   }
 }
