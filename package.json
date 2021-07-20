@@ -17,7 +17,7 @@
     "apisauce": "^1.1.1",
     "cerealizr": "^1.0.1-alpha",
     "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react-native": "0.62.3",
     "react-native-config": "^1.0.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-linear-gradient": "^2.5.6",
